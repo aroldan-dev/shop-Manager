@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Accesorio</title>
+    <link rel="stylesheet" href="../resaltadoCodigo/highlight/styles/base16/materia.min.css">
+    <link rel="stylesheet" href="formatoJava.css">
+    <script src="../resaltadoCodigo/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <h1>Accesorio</h1>
+    <div class="nav">
+        <div class="m1"><a href="../../index.html">INICIO</a></div>
+        <div class="m1"><a href="Main.html">MAIN</a></div>
+        <div class="m1">
+            <a href="Persona.html">PERSONA</a>
+            <div class="m2"><a href="Vendedor.html">VENDEDOR</a></div>
+            <div class="m2"><a href="Cliente.html">CLIENTE</a></div>
+        </div>
+        <div class="m1">
+            <a href="Articulo.html">ARTICULO</a>
+            <div class="m2"><a href="Ropa.html">ROPA</a></div>
+            <div class="m2"><a href="Zapatilla.html">ZAPATILLA</a></div>
+            <div class="m2"><a href="Accesorio.html">ACCESORIO</a></div>
+        </div>
+        <div class="m1"><a href="Venta.html">VENTA</a></div>
+        <div class="m1"><a href="Tienda.html">TIENDA</a></div>
+
+        <div class="m1">
+            OTROS
+            <div class="m2"><a href="../htmls/Clases.html">CLASES</a></div>
+            <div class="m2"><a href="../htmls/Ejecucion.html">EJECUCION</a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="codigo">
+            <pre>
+                <code>
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author alex
+ */
+public class Accesorio extends Articulo{
+    //Atributos de la clase Accesorio
+    private String talla;
+    private String Categoria;
+
+    //Getters y setters de la clase Accesorio
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getCategoria() {
+        return new String(Categoria);
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = new String (Categoria);
+    }
+    
+    //3 Constructores de la clase Accesorio
+    public Accesorio(String talla, String nombre, String Categoria, double precio, int stock, String descripcion, String marca, String color) {
+        super(nombre, precio, stock, descripcion, marca, color);
+        setCategoria(Categoria);
+        setTalla(talla);
+    }
+    
+    public Accesorio(){
+        
+    }
+    
+    public Accesorio(Accesorio A){
+       super((Articulo) A);
+       setCategoria(A.getCategoria());
+       setTalla(A.getTalla());
+        
+    }
+    
+    //toString clase Accesorio
+    @Override
+    public String toString() {
+        return "Accesorio{"+super.toString() + "talla=" + talla + ", Categoria=" + Categoria + '}';
+    }
+    
+    
+    //Método sobreescrito de la clase Articulo
+    @Override
+    public String getTallaArticulo() {
+        return "["+getTalla()+"]";
+    }
+
+    
+    
+}
+
+                </code>
+            </pre>
+        </div>
+
+        <div class="explicacion">
+            <h3>EXPLICACIÓN</h3>
+            Accesorio clase que hereda de articulo y representa accesorios<br>ATRIBUTOS
+            <ul>
+                <li>* super</li>
+                <li>String talla</li>
+                <li>String categoria</li>
+
+
+            </ul>
+            MÉTODOS
+            <ul>
+                <li>* super métodos</li>
+                <li>String getTallaArticulo() metodo que devuelve la talla</li>
+            </ul>
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Zapatilla</title>
+    <link rel="stylesheet" href="../resaltadoCodigo/highlight/styles/base16/materia.min.css">
+    <link rel="stylesheet" href="formatoJava.css">
+    <script src="../resaltadoCodigo/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <h1>Zapatilla</h1>
+    <div class="nav">
+        <div class="m1"><a href="../../index.html">INICIO</a></div>
+        <div class="m1"><a href="Main.html">MAIN</a></div>
+        <div class="m1">
+            <a href="Persona.html">PERSONA</a>
+            <div class="m2"><a href="Vendedor.html">VENDEDOR</a></div>
+            <div class="m2"><a href="Cliente.html">CLIENTE</a></div>
+        </div>
+        <div class="m1">
+            <a href="Articulo.html">ARTICULO</a>
+            <div class="m2"><a href="Ropa.html">ROPA</a></div>
+            <div class="m2"><a href="Zapatilla.html">ZAPATILLA</a></div>
+            <div class="m2"><a href="Accesorio.html">ACCESORIO</a></div>
+        </div>
+        <div class="m1"><a href="Venta.html">VENTA</a></div>
+        <div class="m1"><a href="Tienda.html">TIENDA</a></div>
+
+        <div class="m1">
+            OTROS
+            <div class="m2"><a href="../htmls/Clases.html">CLASES</a></div>
+            <div class="m2"><a href="../htmls/Ejecucion.html">EJECUCION</a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="codigo">
+            <pre>
+                <code>
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author alex
+ */
+public class Zapatilla extends Articulo{
+    //Atributos de la clase Zapatilla
+    private double talla;
+    private String categoria;
+    private String material;
+
+    //Getters y setters de la clase Zapatilla
+    public double getTalla() {
+        return talla;
+    }
+
+    public void setTalla(double talla) {
+        if (talla > 50 || talla < 20){
+            talla = 40;
+        }
+        this.talla = talla;
+    }
+
+    public String getCategoria() {
+        return new String (categoria);
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = new String (categoria);
+    }
+
+    public String getMaterial() {
+        return new String (material);
+    }
+
+    public void setMaterial(String material) {
+        this.material = new String (material);
+    }
+    
+    //Constructores de la clase Zapatilla
+    public Zapatilla(double talla, String categoria, String material, String nombre, double precio, int stock, String descripcion, String marca, String color) {
+        super(nombre, precio, stock, descripcion, marca, color);
+        setTalla(talla);
+        setCategoria(categoria);
+        setMaterial(material);
+    }
+    
+    public Zapatilla(){
+       super();
+    }
+    
+    public Zapatilla(Zapatilla Z){
+       super((Articulo)Z);
+       setTalla(Z.getTalla());
+       setCategoria(Z.getCategoria());
+       setMaterial(Z.getMaterial());
+    }
+    
+    //toString de la clase Zapatilla
+    @Override
+    public String toString() {
+        return "Zapatilla{"+super.toString() + "talla=" + talla + ", categoria=" + categoria + ", material=" + material + '}';
+    }
+
+    
+    //Método para obtener la talla de la clase Zapatilla sobreescrito de Articulo (metodo abstracto en Articulo)
+    @Override
+    public String getTallaArticulo() {
+        return "["+getTalla()+"]";
+    }
+    
+    
+}
+
+                </code>
+            </pre>
+        </div>
+
+        <div class="explicacion">
+            <h3>EXPLICACIÓN</h3>
+            Zapatilla clase que hereda de articulo y representa zapatillas<br>ATRIBUTOS
+            <ul>
+                <li>* super</li>
+                <li>double talla</li>
+                <li>String categoria</li>
+                <li>String material</li>
+
+            </ul>
+            MÉTODOS
+            <ul>
+                <li>* super métodos</li>
+                <li>String getTallaArticulo() metodo que devuelve la talla</li>
+            </ul>
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

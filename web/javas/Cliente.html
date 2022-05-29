@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Cliente</title>
+    <link rel="stylesheet" href="../resaltadoCodigo/highlight/styles/base16/materia.min.css">
+    <link rel="stylesheet" href="formatoJava.css">
+    <script src="../resaltadoCodigo/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+    
+    <h1>Cliente</h1>
+    <div class="nav">
+        <div class="m1"><a href="../../index.html">INICIO</a></div>
+        <div class="m1"><a href="Main.html">MAIN</a></div>
+            <div class="m1">
+                <a href="Persona.html">PERSONA</a>
+                <div class="m2"><a href="Vendedor.html">VENDEDOR</a></div>
+                <div class="m2"><a href="Cliente.html">CLIENTE</a></div>
+            </div>
+            <div class="m1">
+                <a href="Articulo.html">ARTICULO</a>
+                <div class="m2"><a href="Ropa.html">ROPA</a></div>
+                <div class="m2"><a href="Zapatilla.html">ZAPATILLA</a></div>
+                <div class="m2"><a href="Accesorio.html">ACCESORIO</a></div>
+            </div>
+            <div class="m1"><a href="Venta.html">VENTA</a></div>
+            <div class="m1"><a href="Tienda.html">TIENDA</a></div>
+            
+            <div class="m1">
+                OTROS
+                <div class="m2"><a href="../htmls/Clases.html">CLASES</a></div>
+                <div class="m2"><a href="../htmls/Ejecucion.html">EJECUCION</a></div>
+            </div>
+    </div>
+    <div class="container">
+        <div class="codigo">
+            <pre>
+                <code>
+                    
+import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Objects;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author alex
+ */
+public class Cliente extends Persona {
+    //Atributos de la clase Cliente
+    private static int contadorClientes = 0;
+    private int idCliente;
+    private boolean esSocio;
+
+    //Getters y setters de la clase Cliente
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public boolean getEsSocio() {
+        return esSocio;
+    }
+
+    public void setEsSocio(boolean p) {
+        this.esSocio = p;
+    }
+    
+    //Constructores de la clase Cliente
+    public Cliente(String nombre, String apellidos, String dni, int anio, int mes, int dia) {
+        super(nombre, apellidos, dni, anio, mes, dia);
+        idCliente = contadorClientes++;
+        setEsSocio(false);
+    }
+
+    public Cliente() {
+    }
+    
+    public Cliente(Cliente C) {
+        super((Persona)C);
+        idCliente = contadorClientes++;
+        setEsSocio(C.esSocio);
+    }
+    
+    //toString de la clase Cliente
+    @Override
+    public String toString() {
+        return "Cliente{" + super.toString() + "idCliente=" + idCliente + ", esSocio=" + esSocio + '}';
+    }
+    
+    //equals de la clase Cliente
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Cliente) {
+            Cliente tmp = (Cliente) obj;
+            if (super.equals(obj) && getIdCliente() == tmp.getIdCliente()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    //hashCode de la clase Cliente que usa el hashCode de Persona + el id del cliente
+    @Override
+    public int hashCode(){
+        return Objects.hash(idCliente,super.hashCode());
+    }
+    
+    //Método para añadir articulos al carrito de una Cliente
+    public void anadirAlCarrito(Articulo A, Integer cantidad, LinkedHashMap&lt;Articulo,Integer&gt; carrito){
+        carrito.put(A, cantidad);
+    }
+}
+
+                </code>
+            </pre>
+        </div>
+        
+        <div class="explicacion">
+            <h3>EXPLICACIÓN</h3>    
+            La clase Cliente se encarga de gestionar los clientes en nuestra Tienda,
+            hereda de la clase Persona.<br><br>ATRIBUTOS
+            <ul>
+                <li>*       super</li>
+                <li>int     idCliente</li>
+                <li>boolean esSocio</li>
+            </ul>
+            <br>Métodos
+            <ul>
+                <li>* super métodos</li>
+                <li>void anadirAlCarrito(Articulo A, Integer cantidad, LinkedHashMap&lt;Articulo,Integer&gt; carrito), este método recibe
+                    un articulo, la cantidad a añadir y un mapa el cual representa el carrito del cliente al que se le añade el Articulo con
+                    la cantidad deseada
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

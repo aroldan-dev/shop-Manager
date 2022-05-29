@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Venta</title>
+    <link rel="stylesheet" href="../resaltadoCodigo/highlight/styles/base16/materia.min.css">
+    <link rel="stylesheet" href="formatoJava.css">
+    <script src="../resaltadoCodigo/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <h1>Venta</h1>
+    <div class="nav">
+        <div class="m1"><a href="../../index.html">INICIO</a></div>
+        <div class="m1"><a href="Main.html">MAIN</a></div>
+        <div class="m1">
+            <a href="Persona.html">PERSONA</a>
+            <div class="m2"><a href="Vendedor.html">VENDEDOR</a></div>
+            <div class="m2"><a href="Cliente.html">CLIENTE</a></div>
+        </div>
+        <div class="m1">
+            <a href="Articulo.html">ARTICULO</a>
+            <div class="m2"><a href="Ropa.html">ROPA</a></div>
+            <div class="m2"><a href="Zapatilla.html">ZAPATILLA</a></div>
+            <div class="m2"><a href="Accesorio.html">ACCESORIO</a></div>
+        </div>
+        <div class="m1"><a href="Venta.html">VENTA</a></div>
+        <div class="m1"><a href="Tienda.html">TIENDA</a></div>
+
+        <div class="m1">
+            OTROS
+            <div class="m2"><a href="../htmls/Clases.html">CLASES</a></div>
+            <div class="m2"><a href="../htmls/Ejecucion.html">EJECUCION</a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="codigo">
+            <pre>
+                <code>
+
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.LinkedHashMap;
+import java.util.Objects;
+import java.util.TreeSet;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author alex
+ */
+public class Venta implements Comparable&lt;Venta&gt;, Serializable{
+    //Atributos de la clase Venta
+    private static int contadorVentas = 0;
+    private int idVenta;
+    private Cliente cliente;
+    private Vendedor vendedor;
+    private LinkedHashMap&lt;Articulo, Integer&gt; articulos;
+    private GregorianCalendar fechaVenta;
+    
+    //Getters y setter de la clase Venta
+    public int getIdVenta() {
+        return idVenta;
+    }
+
+    public Cliente getCliente() {
+        return new Cliente(cliente);
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vendedor getVendedor() {
+        return new Vendedor(vendedor);
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public LinkedHashMap&lt;Articulo, Integer&gt; getArticulos() {
+        //En este caso si que devolvemos el Mapa ya que debermos trabajar sobre el en métodos futuros
+        return articulos;
+    }
+
+    public void setArticulos(LinkedHashMap&lt;Articulo, Integer&gt; articulos) {
+        this.articulos = articulos;
+    }
+
+    public GregorianCalendar getFechaVenta() {
+        //En este caso si que devolvemos el objeto ya que debermos trabajar sobre el en el futuro
+        return fechaVenta;
+    }
+
+    public void setFechaVenta(GregorianCalendar fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
+    
+    //Constructores de la clase Venta
+    public Venta(Cliente cliente, Vendedor vendedor, LinkedHashMap&lt;Articulo, Integer&gt; articulos) {
+        this.idVenta = contadorVentas++;
+        setCliente(cliente);
+        setVendedor(vendedor);
+        setArticulos(articulos);
+        setFechaVenta(new GregorianCalendar());
+    }
+    
+    public Venta(Venta v){
+        this.idVenta = contadorVentas++;
+        setCliente(v.getCliente());
+        setVendedor(v.getVendedor());
+        setArticulos(v.getArticulos());
+        setFechaVenta(v.getFechaVenta());
+    }
+    
+    //toString de la clase Venta
+    @Override
+    public String toString() {
+        return "Venta{" + "idVenta=" + idVenta + ", cliente=" + cliente.getNombre() + ", vendedorID=" + vendedor.getIdVendedor() 
+        + ", articulos=" + articulos.size() + ", fechaVenta=" + getFechaFormateada(fechaVenta) + '}';
+    }
+    
+    //hashCode de la clase Venta
+    @Override
+    public int hashCode() {
+        return 31*Objects.hash(getIdVenta(),getVendedor(),getCliente(),getFechaVenta());
+    }
+
+    //equals de la clase Venta
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Venta){
+            Venta tmp = (Venta) obj;
+            if(this.getIdVenta() == tmp.getIdVenta()){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    
+    //Método para obtener la fecha formateada es decir DD/MM/YYYY
+    public String getFechaFormateada(GregorianCalendar g) {
+        return String.valueOf(g.get(g.DAY_OF_MONTH) + "/" + (g.get(g.MONTH) + 1) + "/" + g.get(g.YEAR)+" - ["+g.get(Calendar.HOUR_OF_DAY)+":"+g.get(Calendar.MINUTE)+"]");
+    }
+    
+    //compareTo para poder ordenar las ventas segun id de menor a mayor
+    @Override
+    public int compareTo(Venta V) {
+        Integer i = this.getIdVenta();
+        return i.compareTo(V.getIdVenta());
+    }
+}
+
+                </code>
+            </pre>
+        </div>
+
+        <div class="explicacion">
+            <h3>EXPLICACIÓN</h3>
+            La clase Venta almacena los datos importantes de una venta, cliente , vendedor y articulos de la compra<br>ATRIBUTOS
+            <ul>
+                <li>int idVenta</li>
+                <li>Cliente cliente</li>
+                <li>Vendedor vendedor</li>
+                <li>LinkedHashMap&lt;Articulo,Integer&gt; articulos</li>
+                <li>GregorianCalendar fechaVenta</li>
+
+
+            </ul>
+            MÉTODOS
+            <ul>
+                <li>String getFechaFormateada() metodo que devuelve fecha de la venta con formato DD/MM/YYYY - [HH:MM]</li>
+            </ul>
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

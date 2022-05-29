@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+body{
+    background-color: #ABB8C3;
+}
+
+h1{
+    margin-left: 10px;
+    font-family: 'Nunito', sans-serif;
+    color: #2b3e50;
+    font-weight: 500;
+}
+body{
+    font-family: 'Nunito', sans-serif;
+    font-size: larger;
+    font-weight: 300;
+}
+header{
+    width: 40%;
+}
+div.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15%;
+}
+section{
+    padding-top: 5%;
+}
+div.general{
+    margin-left: 1%;
+    width: 99%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+div.text{
+    width: 50%;
+    text-align: justify;
+}
+
+
+img{
+    border: 5px solid black;
+    border-radius: 5%;
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    margin-top: 35px;
+}
+
+
+nav{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    gap: 10px;
+    padding-bottom: 3%;
+    margin: 0 auto;
+    width: 60%;
+}
+nav div{
+    width: 150PX;
+    height: 30px;
+    text-align: center;
+    padding-top: 5%;
+    color: white;
+    background-color: #2b3e50;
+}
+
+div.m2{
+    position: absolute;
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+nav div:hover{
+    background-color: #536575;
+}
+div.m1:hover > div.m2{
+    display: block;
+    position: relative;
+}
+footer{
+    margin-top: 2%;
+    width: 100%;
+    text-align: center;
+}

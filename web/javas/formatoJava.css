@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+html {
+    background-color: #ABB8C3;
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+    color: #263238;
+    text-align: center;
+    font-weight: 400;
+}
+
+pre code {
+    border-radius: 20px;
+
+}
+
+div.container {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    width: 93%;
+}
+
+div.codigo {
+    padding-top:2%;
+    width: 70%;
+}
+
+div.explicacion {
+    position: sticky;
+    display: block;
+    top: 25%;
+    background: #263238;
+    width: 30%;
+    height: 150%;
+    font-family: 'Nunito', sans-serif;
+    font-size: large;
+    text-align: justify;
+    color:white;
+    padding: 2%;
+    border-radius: 20px;
+    margin-bottom: 2.4%;
+}
+
+.nav{
+    font-family: 'Nunito', sans-serif;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    gap: 10px;
+    padding-bottom: 3%;
+    margin: 0 auto;
+    width: 60%;
+}
+.nav div{
+    width: 150PX;
+    height: 30px;
+    text-align: center;
+    padding-top: 5%;
+    color: white;
+    background-color: #2b3e50;
+}
+
+div.m2{
+    position: absolute;
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+div.nav div:hover{
+    background-color: #536575;
+}
+
+div.m1:hover > div.m2{
+    position: relative;
+    display: block;
+}
+ul ,li{
+    list-style-type:"-";
+}
+div img{
+    margin-left: 4%;
+}
+img{
+    width: 95%;
+    height: 95%;
+    margin: 0 auto;
+    border: 5px solid #536575;;
+}
+img[src="../images/ejecucionPrograma.jpg"]{
+    width: 95%;
+    height: 900px;
+}

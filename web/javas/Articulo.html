@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Articulo</title>
+    <link rel="stylesheet" href="../resaltadoCodigo/highlight/styles/base16/materia.min.css">
+    <link rel="stylesheet" href="formatoJava.css">
+    <script src="../resaltadoCodigo/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <h1>Articulo</h1>
+    <div class="nav">
+        <div class="m1"><a href="../../index.html">INICIO</a></div>
+        <div class="m1"><a href="Main.html">MAIN</a></div>
+        <div class="m1">
+            <a href="Persona.html">PERSONA</a>
+            <div class="m2"><a href="Vendedor.html">VENDEDOR</a></div>
+            <div class="m2"><a href="Cliente.html">CLIENTE</a></div>
+        </div>
+        <div class="m1">
+            <a href="Articulo.html">ARTICULO</a>
+            <div class="m2"><a href="Ropa.html">ROPA</a></div>
+            <div class="m2"><a href="Zapatilla.html">ZAPATILLA</a></div>
+            <div class="m2"><a href="Accesorio.html">ACCESORIO</a></div>
+        </div>
+        <div class="m1"><a href="Venta.html">VENTA</a></div>
+        <div class="m1"><a href="Tienda.html">TIENDA</a></div>
+
+        <div class="m1">
+            OTROS
+            <div class="m2"><a href="../htmls/Clases.html">CLASES</a></div>
+            <div class="m2"><a href="../htmls/Ejecucion.html">EJECUCION</a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="codigo">
+            <pre>
+                <code>
+
+import java.io.Serializable;
+import java.util.Objects;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+/**
+ *
+ * @author alex
+ */
+public abstract class Articulo implements Comparable&lt;Articulo&gt;, Serializable {
+
+    //Atributos de la clase Articulo
+    private static int contadorArticulo = 0;
+    private int idArticulo;
+    private String nombre;
+    private double precio;
+    private int stock;
+    private String descripcion;
+    private String marca;
+    private String color;
+
+    //Getters y setters clase Articulo
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = new String(color);
+    }
+
+    public int getIdArticulo() {
+        return idArticulo;
+    }
+
+    public String getNombre() {
+        return new String(nombre.toUpperCase());
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = new String(nombre);
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getDescripcion() {
+        return new String(descripcion);
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = new String(descripcion);
+    }
+
+    public String getMarca() {
+        return new String(marca);
+    }
+
+    public void setMarca(String marca) {
+        this.marca = new String(marca);
+    }
+
+    //Constructores clase Articulo
+    public Articulo(String nombre, double precio, int stock, String descripcion, String marca, String color) {
+        this.idArticulo = contadorArticulo++;
+        setNombre(nombre);
+        setPrecio(precio);
+        setStock(stock);
+        setDescripcion(descripcion);
+        setMarca(marca);
+        setColor(color);
+    }
+
+    public Articulo() {
+    }
+
+    public Articulo(Articulo A) {
+        this.idArticulo = contadorArticulo++;
+        setNombre(A.getNombre());
+        setPrecio(A.getPrecio());
+        setStock(A.getStock());
+        setDescripcion(A.getDescripcion());
+        setMarca(A.getMarca());
+        setColor(A.getColor());
+    }
+
+    //toString de la clase Articulo
+    @Override
+    public String toString() {
+        return "Articulo{" + "idArticulo=" + idArticulo + ", nombre=" + nombre + ", precio=" + precio 
+        + ", stock=" + stock + ", descripcion=" + descripcion + ", marca=" + marca + ", color=" + color + '}';
+    }
+
+    //hashCode de la clase Articulo
+    @Override
+    public int hashCode() {
+        return 31 * Objects.hash(getIdArticulo(), getNombre(), getMarca(), getStock(), getPrecio(), getDescripcion());
+    }
+
+    //equals de la clase Articulo
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Articulo) {
+            Articulo tmp = (Articulo) obj;
+            if (tmp.getIdArticulo() == this.getIdArticulo()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    //Metodo para añadir stock
+    public void reponerStock(int cantidad) {
+        setStock(getStock() + cantidad);
+    }
+
+    //Metodo para modificarPrecio
+    public void modificarPrecio(double nuevoPrecio) {
+        setPrecio(nuevoPrecio);
+    }
+
+    //Metodo para modificar nombre
+    public void modificarNombre(String nuevoNombre) {
+        setNombre(nuevoNombre);
+    }
+
+    //Metodo a sobreescribir en las clases hijas
+    public abstract String getTallaArticulo();
+
+    //compareTo para ordenar los articulos de id menor a mayor
+    @Override
+    public int compareTo(Articulo A) {
+        if (A.getIdArticulo() < this.getIdArticulo()) {
+            return 1;
+        } else if (A.getIdArticulo() > this.getIdArticulo()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+                </code>
+            </pre>
+        </div>
+
+        <div class="explicacion">
+            <h3>EXPLICACIÓN</h3>
+            Articulo es una clase abstracta de la cual heredan otras como ropa, apatilla...<br>ATRIBUTOS
+            <ul>
+                <li>int idArticulo</li>
+                <li>String nombre</li>
+                <li>double precio</li>
+                <li>int stock</li>
+                <li>String descripcion</li>
+                <li>String marca</li>
+                <li>String color</li>
+
+            </ul>
+            MÉTODOS
+            <ul>
+                <li>void reponerStock(int cantidad) añade stock al articulo</li>
+                <li>void modificarPrecio(double precio) modifica el precio del articulo</li>
+                <li>void modificarNombre(String nombre) modifica el nombre del articulo</li>
+                <li>abstract getTallaArticulo() metodo que se sobreescribira en clases hijas</li>
+            </ul>
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
